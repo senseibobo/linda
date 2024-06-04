@@ -19,8 +19,13 @@ enum State {
 @export var stun_drag: float = 1000.0
 @export var slide_drag: float = 4.0
 
-@export var sound_on_hit: AudioStream
-@export var sound_on_death: AudioStream
+@export var hit_sound_player: AudioStreamPlayer2D
+@export var talking_sound_player: AudioStreamPlayer2D
+@export var death_sound_player: AudioStreamPlayer2D
+
+@export var sounds_on_hit: Array[AudioStream]
+@export var sounds_on_stun: Array[AudioStream]
+@export var sounds_on_death: Array[AudioStream]
 @export var sounds_talking: Array[AudioStream]
 @export var sounds_idle: Array[AudioStream]
 
@@ -69,13 +74,9 @@ func _process_sounds(delta):
 	sound_timer -= delta
 	if sound_timer <= 0:
 		match state:
-			State.IDLE:
-				if sounds_idle.size() > 0:
-					Global.play_sound(sounds_idle.pick_random())
-			State.WALKING:
-				if sounds_talking.size() > 0:
-					Global.play_sound(sounds_talking.pick_random())
-		sound_timer += 5.0+5.0*randf()
+			State.IDLE: _play_idle_sound()
+			State.WALKING: _play_talking_sound()
+		sound_timer += 1.0+10.0*randf()
 
 
 func _physics_process(delta):
@@ -115,7 +116,8 @@ func set_state(new_state: State):
 
 
 func hit(knockback: Vector2):
-	if randi()%6 == 0:
+	_play_hit_sound()
+	if randi()%4 == 0:
 		var blood = preload("res://entities/blood/blood.tscn").instantiate()
 		get_tree().current_scene.add_child(blood)
 		blood.global_position = global_position
@@ -220,7 +222,7 @@ func check_for_stun_collision(collision: KinematicCollision2D):
 	if not collision: return
 	#var collision: KinematicCollision2D = get_slide_collision(i)
 	var collider = collision.get_collider()
-	if velocity.dot(collision.get_normal()) < -80:
+	if velocity.dot(collision.get_normal()) < -130:
 		var stun_duration = 0.5 + min(velocity.length()/300.0, 0.6)
 		get_stunned(stun_duration)
 		velocity = velocity.bounce(collision.get_normal())
@@ -231,9 +233,41 @@ func check_for_stun_collision(collision: KinematicCollision2D):
 			velocity /= 1.4
 
 
+func _play_stun_sound():
+	if sounds_on_stun.size() <= 0: return
+	hit_sound_player.stream = sounds_on_stun.pick_random()
+	hit_sound_player.play(0.0)
+
+
+func _play_hit_sound():
+	if sounds_on_hit.size() <= 0: return
+	hit_sound_player.stream = sounds_on_hit.pick_random()
+	hit_sound_player.play(0.0)
+
+
+func _play_talking_sound():
+	if sounds_talking.size() <= 0: return
+	talking_sound_player.stream = sounds_talking.pick_random()
+	talking_sound_player.play(0.0)
+
+
+func _play_idle_sound():
+	if sounds_idle.size() <= 0: return
+	talking_sound_player.stream = sounds_idle.pick_random()
+	talking_sound_player.play(0.0)
+
+
+func _play_death_sound():
+	if sounds_on_death.size() <= 0: return
+	var dp = death_sound_player.duplicate()
+	get_tree().current_scene.add_child(dp)
+	dp.global_position = death_sound_player.global_position
+	dp.stream = sounds_on_death.pick_random()
+	dp.play(0.0)
+
+
 func get_stunned(time: float):
-	if sound_on_hit:
-		Global.play_sound(sound_on_hit)
+	_play_stun_sound()
 	if randi()%4 == 0:
 		var organ = preload("res://entities/blood/organ.tscn").instantiate()
 		get_tree().current_scene.add_child(organ)
@@ -262,8 +296,7 @@ func _process_stunned(delta):
 
 func death():
 	died.emit()
-	if sound_on_death:
-		Global.play_sound(sound_on_death)
+	_play_death_sound()
 	var gp = sprite.global_position
 	sprite.reparent(get_tree().current_scene)
 	sprite.global_rotation = [-1,1].pick_random() * PI/2

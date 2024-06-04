@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqmg0e1x116rv"]
+[gd_scene load_steps=19 format=3 uid="uid://cqmg0e1x116rv"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_1ae4s"]
 [ext_resource type="PackedScene" uid="uid://y7dywljavgw5" path="res://entities/player/player.tscn" id="1_l5s74"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://vxijpv05j4es" path="res://entities/weapons/satara.tscn" id="8_iniga"]
 [ext_resource type="Script" path="res://levels/exit_area.gd" id="9_fojyv"]
 [ext_resource type="PackedScene" uid="uid://c0bxtv2toov1c" path="res://levels/level_2.tscn" id="10_2b1iw"]
+[ext_resource type="AudioStream" uid="uid://bb1xuyidn26l6" path="res://sound/background_music.mp3" id="12_gjsdx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ip6xg"]
 vertices = PackedVector2Array(143, -196, 143, -76, 71, -76, -137, -196, 71, -11, 78, -11, 78, 3, 103, 3, 103, 109, -13, 140, 143, 109, 143, 140, -13, 205, 143, 205, 143, 232, -137, 232, -137, 127, -106, 127, -106, 12, -137, 12, -137, 3, -30, 3, -30, -11, -21, -11, -21, -76, -137, -76, 143, -233, -137, -233, -137, -234, 143, -240)
@@ -58,6 +59,7 @@ position_change_amount = 61.0
 position = Vector2(0, -192)
 collision_mask = 2
 motion_mode = 0
+age = "young"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(0, -8)
@@ -171,6 +173,11 @@ base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq")])
 
 [node name="Grandpa3" parent="Enemies" instance=ExtResource("6_dtbas")]
 position = Vector2(-113, 91)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_gjsdx")
+volume_db = -20.175
+autoplay = true
 
 [connection signal="picked_up" from="GoldenBread" to="." method="activate_enemies" flags=6 unbinds=1]
 [connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_body_entered"]

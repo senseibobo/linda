@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwgkflppxbn76"]
+[gd_scene load_steps=30 format=3 uid="uid://bwgkflppxbn76"]
 
 [ext_resource type="PackedScene" uid="uid://tg3vujvji1tl" path="res://entities/enemy/base_enemy.tscn" id="1_3k4ta"]
 [ext_resource type="Script" path="res://entities/enemy/grandpa.gd" id="2_1riv1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cuxabawp1kxl" path="res://entities/enemy/grandpa3.png" id="4_al0b4"]
 [ext_resource type="AudioStream" uid="uid://c5qi8egvvl4pr" path="res://sound/dedahit6.ogg" id="4_wuuo8"]
 [ext_resource type="AudioStream" uid="uid://7bl7bmj60qyx" path="res://sound/dedaljut1.ogg" id="5_q05et"]
+[ext_resource type="AudioStream" uid="uid://7ivxhhaq83v5" path="res://sound/dedahit8.ogg" id="5_u7bta"]
 [ext_resource type="AudioStream" uid="uid://cdyor0abdpmnh" path="res://sound/dedaljut2.ogg" id="6_hiaig"]
 [ext_resource type="AudioStream" uid="uid://pke6smstebtf" path="res://sound/dedaljut.ogg" id="7_xm6w0"]
 [ext_resource type="AudioStream" uid="uid://da8tlwoo8vo7l" path="res://sound/dedaidle1.ogg" id="8_m064c"]
@@ -120,11 +121,26 @@ animations = [{
 
 [node name="Grandpa" instance=ExtResource("1_3k4ta")]
 script = ExtResource("2_1riv1")
-sound_on_hit = ExtResource("3_lcsqe")
-sound_on_death = ExtResource("4_wuuo8")
+sounds_on_hit = Array[AudioStream]([ExtResource("4_wuuo8")])
+sounds_on_stun = Array[AudioStream]([ExtResource("3_lcsqe")])
+sounds_on_death = Array[AudioStream]([ExtResource("5_u7bta")])
 sounds_talking = Array[AudioStream]([ExtResource("5_q05et"), ExtResource("6_hiaig"), ExtResource("7_xm6w0")])
 sounds_idle = Array[AudioStream]([ExtResource("8_m064c"), ExtResource("9_7h2xr"), ExtResource("10_uranw"), ExtResource("11_vqmaa"), ExtResource("12_8v3p8")])
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_7pvd0")
 animation = &"3"
+
+[node name="HitSoundPlayer" parent="." index="6"]
+max_distance = 500.0
+attenuation = 3.03143
+bus = &"Master"
+
+[node name="TalkingSoundPlayer" parent="." index="7"]
+max_distance = 500.0
+attenuation = 3.03143
+bus = &"Master"
+
+[node name="DeathSoundPlayer" parent="." index="8"]
+max_distance = 500.0
+bus = &"Master"

@@ -117,6 +117,7 @@ animations = [{
 
 [node name="Player" node_paths=PackedStringArray("health_nodes") instance=ExtResource("1_ft1lh")]
 script = ExtResource("1_0i8i3")
+age = "young"
 health_nodes = [NodePath("CanvasLayer/Telo/Majica"), NodePath("CanvasLayer/Telo/Creva"), NodePath("CanvasLayer/Telo/Jetra"), NodePath("CanvasLayer/Telo/PluceL"), NodePath("CanvasLayer/Telo/PluceD"), NodePath("CanvasLayer/Telo/Srce")]
 start_state = 1
 base_attack_speed = 0.2
@@ -187,3 +188,6 @@ offset_top = 1.0
 offset_right = 36.0
 offset_bottom = 53.0
 texture = ExtResource("12_0idjw")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." index="9"]
+current = true

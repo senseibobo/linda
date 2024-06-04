@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://wiuxy0qq1jn8"]
+[gd_scene load_steps=7 format=3 uid="uid://wiuxy0qq1jn8"]
 
 [ext_resource type="Texture2D" uid="uid://da1svwuvim5g3" path="res://entities/placeholder_entity.tres" id="1_bafpx"]
+[ext_resource type="Script" path="res://entities/entity.gd" id="1_q5cf5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmmrx"]
 animations = [{
@@ -30,10 +31,14 @@ orbit_velocity_min = 4.795
 orbit_velocity_max = 4.795
 gravity = Vector3(0, 98, 0)
 
-[node name="BaseEntity" type="CharacterBody2D" groups=["entity"]]
+[node name="BaseEntity" type="CharacterBody2D" node_paths=PackedStringArray("hit_sound_player", "talking_sound_player", "death_sound_player") groups=["entity"]]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
+script = ExtResource("1_q5cf5")
+hit_sound_player = NodePath("HitSoundPlayer")
+talking_sound_player = NodePath("TalkingSoundPlayer")
+death_sound_player = NodePath("DeathSoundPlayer")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -61,3 +66,18 @@ local_coords = true
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 visible = false
 vertices = PackedVector2Array(-3, -8, -8, 0, -1, 7, 8, 1, 2, -8)
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 160.0
+attenuation = 3.73213
+bus = &"SFX"
+
+[node name="TalkingSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 160.0
+attenuation = 4.0
+bus = &"SFX"
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 160.0
+attenuation = 3.03143
+bus = &"SFX"
