@@ -1,0 +1,135 @@
+[gd_scene load_steps=33 format=3 uid="uid://bb264i1tmfmtx"]
+
+[ext_resource type="PackedScene" uid="uid://tg3vujvji1tl" path="res://entities/enemy/base_enemy.tscn" id="1_i5f73"]
+[ext_resource type="Script" path="res://entities/enemy/bread_grandma.gd" id="2_3gmhg"]
+[ext_resource type="AudioStream" uid="uid://drldoottm8002" path="res://sound/babadie1.ogg" id="3_0vxv1"]
+[ext_resource type="Texture2D" uid="uid://b0fgq2hr38lpe" path="res://entities/enemy/bread_grandma1.png" id="3_4qe12"]
+[ext_resource type="AudioStream" uid="uid://jmp08r62lmm3" path="res://sound/babahit.ogg" id="3_hvnec"]
+[ext_resource type="Texture2D" uid="uid://cmscqoneerapr" path="res://entities/enemy/bread_grandma2.png" id="4_2ujmk"]
+[ext_resource type="AudioStream" uid="uid://b1vkglpiiybtu" path="res://sound/babaljuta1.ogg" id="5_so5w3"]
+[ext_resource type="Texture2D" uid="uid://b7xh5yv0jm73j" path="res://entities/enemy/bread_grandma3.png" id="5_yauhl"]
+[ext_resource type="AudioStream" uid="uid://cb8kt6bygsoxp" path="res://sound/babaljuta2.ogg" id="6_ymq1j"]
+[ext_resource type="AudioStream" uid="uid://5bje11cqjrud" path="res://sound/babaljuta3.ogg" id="7_sph6f"]
+[ext_resource type="AudioStream" uid="uid://dl2ujfopu3po" path="res://sound/babaljuta4.ogg" id="8_2041k"]
+[ext_resource type="AudioStream" uid="uid://cehr3amow370v" path="res://sound/babaidle1.ogg" id="9_t3262"]
+[ext_resource type="AudioStream" uid="uid://bmgbreicntuvn" path="res://sound/babaidle2.ogg" id="10_5qap1"]
+[ext_resource type="AudioStream" uid="uid://bvv10u77eq1hd" path="res://sound/babaidle3.ogg" id="11_gdfng"]
+[ext_resource type="AudioStream" uid="uid://cxnh4jm1kds7t" path="res://sound/babaidle4.ogg" id="12_dxbpq"]
+[ext_resource type="AudioStream" uid="uid://b0o4f470ovlao" path="res://sound/babaidle5.ogg" id="13_plxwn"]
+[ext_resource type="AudioStream" uid="uid://b8u8shf6l8hls" path="res://sound/babaidle6.ogg" id="14_2gghk"]
+[ext_resource type="AudioStream" uid="uid://bsksqvmk5dbqi" path="res://sound/babaidle7.ogg" id="15_vtgb8"]
+[ext_resource type="AudioStream" uid="uid://etr8nf6rrgll" path="res://sound/babaidle8.ogg" id="16_lrbpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mxs8"]
+atlas = ExtResource("3_4qe12")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ierd6"]
+atlas = ExtResource("3_4qe12")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw4qn"]
+atlas = ExtResource("3_4qe12")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jmee"]
+atlas = ExtResource("3_4qe12")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syjvj"]
+atlas = ExtResource("4_2ujmk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46mei"]
+atlas = ExtResource("4_2ujmk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vefy"]
+atlas = ExtResource("4_2ujmk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycnwo"]
+atlas = ExtResource("4_2ujmk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0j1a"]
+atlas = ExtResource("5_yauhl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p3nf"]
+atlas = ExtResource("5_yauhl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibwsq"]
+atlas = ExtResource("5_yauhl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_demvj"]
+atlas = ExtResource("5_yauhl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6i5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mxs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ierd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw4qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jmee")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syjvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46mei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vefy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycnwo")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0j1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p3nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibwsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_demvj")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[node name="BreadGrandma" instance=ExtResource("1_i5f73")]
+collision_mask = 2
+script = ExtResource("2_3gmhg")
+sound_on_hit = ExtResource("3_hvnec")
+sound_on_death = ExtResource("3_0vxv1")
+sounds_talking = Array[AudioStream]([ExtResource("5_so5w3"), ExtResource("6_ymq1j"), ExtResource("7_sph6f"), ExtResource("8_2041k")])
+sounds_idle = Array[AudioStream]([ExtResource("9_t3262"), ExtResource("10_5qap1"), ExtResource("11_gdfng"), ExtResource("12_dxbpq"), ExtResource("13_plxwn"), ExtResource("14_2gghk"), ExtResource("15_vtgb8"), ExtResource("16_lrbpn")])
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_k6i5g")
+animation = &"3"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2a0xbf6idvlx"]
+
+[ext_resource type="PackedScene" uid="uid://cbn7cviu38hr0" path="res://entities/weapons/stick_weapon.tscn" id="1_66ans"]
+[ext_resource type="Texture2D" uid="uid://shkwurgpj13" path="res://entities/weapons/stap.png" id="2_gme41"]
+
+[node name="Stick" instance=ExtResource("1_66ans")]
+
+[node name="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+rotation = -0.27338
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="1"]
+position = Vector2(2.38419e-07, 4)
+rotation = 1.309
+texture = ExtResource("2_gme41")

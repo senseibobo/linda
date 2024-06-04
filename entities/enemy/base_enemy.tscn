@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://tg3vujvji1tl"]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_2721u"]
+[ext_resource type="PackedScene" uid="uid://wiuxy0qq1jn8" path="res://entities/base_entity.tscn" id="1_iafds"]
+[ext_resource type="Texture2D" uid="uid://da1svwuvim5g3" path="res://entities/placeholder_entity.tres" id="3_sn0by"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiqje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sn0by")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BaseEnemy" groups=["enemy"] instance=ExtResource("1_iafds")]
+script = ExtResource("1_2721u")
+base_attack_speed = 1.2
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_eiqje")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3"]
+unique_name_in_owner = true

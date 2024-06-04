@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://wiuxy0qq1jn8"]
+
+[ext_resource type="Texture2D" uid="uid://da1svwuvim5g3" path="res://entities/placeholder_entity.tres" id="1_bafpx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmmrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bafpx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2flx"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wri4"]
+size = Vector2(20, 24)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_foewd"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 12.0
+orbit_velocity_min = 4.795
+orbit_velocity_max = 4.795
+gravity = Vector3(0, 98, 0)
+
+[node name="BaseEntity" type="CharacterBody2D" groups=["entity"]]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_hmmrx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u2flx")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_1wri4")
+
+[node name="Stars" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -23)
+process_material = SubResource("ParticleProcessMaterial_foewd")
+visibility_rect = Rect2(-1, -0.993194, 13.384, 6.24041)
+local_coords = true
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-3, -8, -8, 0, -1, 7, 8, 1, 2, -8)

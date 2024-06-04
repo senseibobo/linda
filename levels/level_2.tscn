@@ -1,0 +1,160 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0bxtv2toov1c"]
+
+[ext_resource type="Texture2D" uid="uid://lv28o422q48y" path="res://levels/sektor_2.png" id="1_igpoa"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_kkyou"]
+[ext_resource type="Script" path="res://levels/game_camera.gd" id="2_w2ycg"]
+[ext_resource type="PackedScene" uid="uid://y7dywljavgw5" path="res://entities/player/player.tscn" id="3_508ps"]
+[ext_resource type="PackedScene" uid="uid://be38ansoqjo1x" path="res://items/golden_tp.tscn" id="4_tyl8u"]
+[ext_resource type="Script" path="res://levels/exit_area.gd" id="5_unb37"]
+[ext_resource type="PackedScene" uid="uid://dfh5oo0h57fu3" path="res://levels/level_3.tscn" id="6_135fn"]
+[ext_resource type="PackedScene" uid="uid://bb264i1tmfmtx" path="res://entities/enemy/bread_grandma.tscn" id="7_cefht"]
+[ext_resource type="PackedScene" uid="uid://vxijpv05j4es" path="res://entities/weapons/satara.tscn" id="8_cevs1"]
+[ext_resource type="PackedScene" uid="uid://bwgkflppxbn76" path="res://entities/enemy/grandpa.tscn" id="9_yoiin"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4piv8"]
+vertices = PackedVector2Array(138, -87, 141, -27, -90, -27, -140, -85, -146, 219, -90, 118, 81, 219, -33, 147, 149, 147, 154, 249, 81, 249, -33, 118)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 9, 10, 6), PackedInt32Array(7, 8, 6), PackedInt32Array(7, 5, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-148, -93, -155, 257, 163, 258, 146, -96)])
+parsed_geometry_type = 1
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 8.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_36wtg"]
+normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glofr"]
+size = Vector2(228, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg18c"]
+size = Vector2(77, 16)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_kkyou")
+
+[node name="Sektor2" type="Sprite2D" parent="."]
+z_index = -60
+position = Vector2(0, -8)
+texture = ExtResource("1_igpoa")
+metadata/_edit_lock_ = true
+
+[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(0, -160)
+process_callback = 0
+script = ExtResource("2_w2ycg")
+target = NodePath("../Player")
+top_border = 32.0
+bottom_border = 64.0
+position_change_amount = 61.0
+
+[node name="Player" parent="." instance=ExtResource("3_508ps")]
+position = Vector2(117, -87)
+motion_mode = 0
+age = "middleaged"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -8)
+navigation_polygon = SubResource("NavigationPolygon_4piv8")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-152.935, 0)
+shape = SubResource("WorldBoundaryShape2D_36wtg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(17, -96)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_36wtg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(148, 25)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_36wtg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(32, 45.5)
+shape = SubResource("RectangleShape2D_glofr")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(89, 74)
+shape = SubResource("RectangleShape2D_glofr")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(89, 74)
+shape = SubResource("RectangleShape2D_glofr")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-41, 291)
+shape = SubResource("RectangleShape2D_glofr")
+
+[node name="GoldenTP" parent="." instance=ExtResource("4_tyl8u")]
+position = Vector2(-35, 112)
+collision_priority = 1.0
+
+[node name="ExitArea2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_unb37")
+next_scene = ExtResource("6_135fn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea2"]
+position = Vector2(114.5, 227)
+shape = SubResource("RectangleShape2D_mg18c")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BreadGrandma" parent="." instance=ExtResource("7_cefht")]
+position = Vector2(-139, -35)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="BreadGrandma4" parent="." instance=ExtResource("7_cefht")]
+position = Vector2(-93, 6)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="BreadGrandma5" parent="." instance=ExtResource("7_cefht")]
+position = Vector2(-93, 6)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="BreadGrandma2" parent="." instance=ExtResource("7_cefht")]
+position = Vector2(-70, 110)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="Grandpa" parent="." instance=ExtResource("9_yoiin")]
+position = Vector2(-2, 141)
+collision_mask = 2
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="Grandpa2" parent="." instance=ExtResource("9_yoiin")]
+position = Vector2(-115, 198)
+collision_mask = 2
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="Grandpa3" parent="." instance=ExtResource("9_yoiin")]
+position = Vector2(-144, 111)
+collision_mask = 2
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="Grandpa4" parent="." instance=ExtResource("9_yoiin")]
+position = Vector2(22, -40)
+collision_mask = 2
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[node name="BreadGrandma3" parent="." instance=ExtResource("7_cefht")]
+position = Vector2(-42, -87)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_cevs1")])
+
+[connection signal="picked_up" from="GoldenTP" to="." method="activate_enemies" flags=6 unbinds=1]
+[connection signal="body_entered" from="ExitArea2" to="ExitArea2" method="_on_body_entered"]

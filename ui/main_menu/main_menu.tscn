@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://blwynaig3b776"]
+
+[ext_resource type="Texture2D" uid="uid://ucymomtf4deg" path="res://ui/main_menu/dots.png" id="2_6kfwp"]
+[ext_resource type="Texture2D" uid="uid://cj4r255tmier4" path="res://ui/main_menu/menu.png" id="3_wsy70"]
+[ext_resource type="Shader" path="res://ui/main_menu/menuback.gdshader" id="4_04xly"]
+[ext_resource type="Texture2D" uid="uid://deyw45uyexkq" path="res://ui/main_menu/menu_mask.png" id="5_g3hoo"]
+[ext_resource type="Texture2D" uid="uid://b35nnk5fgvc1f" path="res://ui/main_menu/linda_logo.png" id="6_3whk5"]
+[ext_resource type="Texture2D" uid="uid://wn3216dem6ed" path="res://ui/main_menu/frame.png" id="7_7vk6m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aert8"]
+shader = ExtResource("4_04xly")
+shader_parameter/node_size = Vector2(13, 13)
+shader_parameter/color = Color(0.937255, 0.317647, 0.207843, 1)
+shader_parameter/color2 = Color(1, 0.835294, 0.196078, 1)
+shader_parameter/albedo_texture = ExtResource("2_6kfwp")
+shader_parameter/mask_texture = ExtResource("5_g3hoo")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_aert8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wsy70")
+metadata/_edit_lock_ = true
+
+[node name="LindaLogo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.709
+anchor_top = 0.5
+anchor_right = 0.709
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.12
+offset_bottom = 26.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_3whk5")
+stretch_mode = 2
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_7vk6m")
+metadata/_edit_lock_ = true

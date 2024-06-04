@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dncen3lxupg3w"]
+
+[ext_resource type="Script" path="res://items/target_item.gd" id="1_a8k73"]
+[ext_resource type="Texture2D" uid="uid://cykfix0oxfts3" path="res://items/rock.png" id="1_cmdbq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rekr5"]
+radius = 7.07107
+
+[node name="TargetItem" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+collision_priority = 2.92
+motion_mode = 1
+script = ExtResource("1_a8k73")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, -2.38419e-07)
+scale = Vector2(0.0555556, 0.0555556)
+texture = ExtResource("1_cmdbq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rekr5")

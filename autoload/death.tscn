@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvy56eneo4oce"]
+
+[ext_resource type="Script" path="res://autoload/death.gd" id="1_etqv5"]
+[ext_resource type="Shader" path="res://autoload/grayscale.gdshader" id="2_y2lf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsdnh"]
+shader = ExtResource("2_y2lf5")
+shader_parameter/t = 0.0
+
+[sub_resource type="Animation" id="Animation_r7px5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grayscale:material:shader_parameter/t")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7hsnx"]
+resource_name = "death"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Grayscale:material:shader_parameter/t")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23ff2"]
+_data = {
+"RESET": SubResource("Animation_r7px5"),
+"death": SubResource("Animation_7hsnx")
+}
+
+[node name="Death" type="CanvasLayer"]
+layer = 20
+script = ExtResource("1_etqv5")
+
+[node name="Grayscale" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jsdnh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_23ff2")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

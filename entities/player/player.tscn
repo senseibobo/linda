@@ -1,0 +1,189 @@
+[gd_scene load_steps=26 format=3 uid="uid://y7dywljavgw5"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_0i8i3"]
+[ext_resource type="PackedScene" uid="uid://wiuxy0qq1jn8" path="res://entities/base_entity.tscn" id="1_ft1lh"]
+[ext_resource type="Texture2D" uid="uid://5t8yffn0e54k" path="res://entities/player/stevesenior-sheet.png" id="3_qs0dm"]
+[ext_resource type="Texture2D" uid="uid://4xiabxh3y4ct" path="res://entities/player/stevegrandpa-sheet.png" id="4_sceks"]
+[ext_resource type="Texture2D" uid="uid://1exgehw18wfm" path="res://entities/player/stevejunior-sheet.png" id="5_8rawj"]
+[ext_resource type="Texture2D" uid="uid://bplw03eopkoia" path="res://entities/player/organs/telo.png" id="6_6x2h4"]
+[ext_resource type="Texture2D" uid="uid://cqibfhhti8l4m" path="res://entities/player/organs/crevao.png" id="7_td1o6"]
+[ext_resource type="Texture2D" uid="uid://c6q5c4jpxw88b" path="res://entities/player/organs/jetra0.png" id="8_6b4du"]
+[ext_resource type="Texture2D" uid="uid://dmhtjreqvsjm2" path="res://entities/player/organs/Lpluce0.png" id="9_gdiwh"]
+[ext_resource type="Texture2D" uid="uid://dc2hxckmeyof4" path="res://entities/player/organs/Rpluce0.png" id="10_w1gey"]
+[ext_resource type="Texture2D" uid="uid://c1dgcb14q7vr5" path="res://entities/player/organs/skrce0.png" id="11_vhhyg"]
+[ext_resource type="Texture2D" uid="uid://dvqp211d30es5" path="res://entities/player/organs/majca.png" id="12_0idjw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjjm3"]
+atlas = ExtResource("3_qs0dm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7718"]
+atlas = ExtResource("3_qs0dm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56ci3"]
+atlas = ExtResource("3_qs0dm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx20e"]
+atlas = ExtResource("3_qs0dm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl4ll"]
+atlas = ExtResource("4_sceks")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvhu"]
+atlas = ExtResource("4_sceks")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhn"]
+atlas = ExtResource("4_sceks")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhr7t"]
+atlas = ExtResource("4_sceks")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl4h4"]
+atlas = ExtResource("5_8rawj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k61c0"]
+atlas = ExtResource("5_8rawj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s645j"]
+atlas = ExtResource("5_8rawj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1lx1"]
+atlas = ExtResource("5_8rawj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_debl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjjm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7718")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56ci3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx20e")
+}],
+"loop": true,
+"name": &"middleaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl4ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hvhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhr7t")
+}],
+"loop": true,
+"name": &"old",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl4h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k61c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s645j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1lx1")
+}],
+"loop": true,
+"name": &"young",
+"speed": 5.0
+}]
+
+[node name="Player" node_paths=PackedStringArray("health_nodes") instance=ExtResource("1_ft1lh")]
+script = ExtResource("1_0i8i3")
+health_nodes = [NodePath("CanvasLayer/Telo/Majica"), NodePath("CanvasLayer/Telo/Creva"), NodePath("CanvasLayer/Telo/Jetra"), NodePath("CanvasLayer/Telo/PluceL"), NodePath("CanvasLayer/Telo/PluceD"), NodePath("CanvasLayer/Telo/Srce")]
+start_state = 1
+base_attack_speed = 0.2
+max_health = 6
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_debl7")
+animation = &"middleaged"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="Telo" type="TextureRect" parent="CanvasLayer" index="0"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_6x2h4")
+
+[node name="Creva" type="TextureRect" parent="CanvasLayer/Telo" index="0"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 35.0
+offset_bottom = 52.0
+texture = ExtResource("7_td1o6")
+
+[node name="Jetra" type="TextureRect" parent="CanvasLayer/Telo" index="1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 31.0
+offset_bottom = 40.0
+texture = ExtResource("8_6b4du")
+
+[node name="PluceL" type="TextureRect" parent="CanvasLayer/Telo" index="2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 22.0
+offset_bottom = 32.0
+texture = ExtResource("9_gdiwh")
+
+[node name="PluceD" type="TextureRect" parent="CanvasLayer/Telo" index="3"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 34.0
+offset_bottom = 32.0
+texture = ExtResource("10_w1gey")
+
+[node name="Srce" type="TextureRect" parent="CanvasLayer/Telo" index="4"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 27.0
+offset_bottom = 25.0
+texture = ExtResource("11_vhhyg")
+
+[node name="Majica" type="TextureRect" parent="CanvasLayer/Telo" index="5"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 53.0
+texture = ExtResource("12_0idjw")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=18 format=3 uid="uid://cvm7p30e68fwv"]
+
+[ext_resource type="Script" path="res://entities/blood/blood.gd" id="1_gxa4a"]
+[ext_resource type="Texture2D" uid="uid://bc1u3eap0031" path="res://entities/blood/krv (1).png" id="2_b7lrl"]
+[ext_resource type="Texture2D" uid="uid://b43nr4eotnlmi" path="res://entities/blood/krv (16).png" id="2_i000p"]
+[ext_resource type="Texture2D" uid="uid://cl1372f6c7krx" path="res://entities/blood/krv (2).png" id="4_rj1lu"]
+[ext_resource type="Texture2D" uid="uid://d44a6k1bgdqr" path="res://entities/blood/krv (3).png" id="5_yh78a"]
+[ext_resource type="Texture2D" uid="uid://cfwqvvtlwbheb" path="res://entities/blood/krv (4).png" id="6_6apjt"]
+[ext_resource type="Texture2D" uid="uid://b3u0kh5mjqisa" path="res://entities/blood/krv (5).png" id="7_m26vr"]
+[ext_resource type="Texture2D" uid="uid://cqhppt52x18xu" path="res://entities/blood/krv (6).png" id="8_3leqr"]
+[ext_resource type="Texture2D" uid="uid://bdho53br0on50" path="res://entities/blood/krv (7).png" id="9_1c04m"]
+[ext_resource type="Texture2D" uid="uid://80wc67i08irm" path="res://entities/blood/krv (8).png" id="10_yfnhm"]
+[ext_resource type="Texture2D" uid="uid://dt6j4nmv4nboe" path="res://entities/blood/krv (9).png" id="11_vjx1q"]
+[ext_resource type="Texture2D" uid="uid://p04ppqv112yg" path="res://entities/blood/krv (10).png" id="12_yhh3o"]
+[ext_resource type="Texture2D" uid="uid://def2npic71tie" path="res://entities/blood/krv (11).png" id="13_chr7u"]
+[ext_resource type="Texture2D" uid="uid://8t81xnkkr4ns" path="res://entities/blood/krv (12).png" id="14_21rg1"]
+[ext_resource type="Texture2D" uid="uid://doaefih50mp1t" path="res://entities/blood/krv (13).png" id="15_h4rr2"]
+[ext_resource type="Texture2D" uid="uid://bm7g7mdbwmmq8" path="res://entities/blood/krv (14).png" id="16_ffmmu"]
+[ext_resource type="Texture2D" uid="uid://bfflc4kv4ytjg" path="res://entities/blood/krv (15).png" id="17_avfut"]
+
+[node name="Blood" type="Node2D"]
+z_index = -2
+script = ExtResource("1_gxa4a")
+blood_textures = Array[Texture2D]([ExtResource("2_i000p"), ExtResource("2_b7lrl"), ExtResource("4_rj1lu"), ExtResource("5_yh78a"), ExtResource("6_6apjt"), ExtResource("7_m26vr"), ExtResource("8_3leqr"), ExtResource("9_1c04m"), ExtResource("10_yfnhm"), ExtResource("11_vjx1q"), ExtResource("12_yhh3o"), ExtResource("13_chr7u"), ExtResource("14_21rg1"), ExtResource("15_h4rr2"), ExtResource("16_ffmmu"), ExtResource("17_avfut")])
+
+[node name="Blood" type="Sprite2D" parent="."]
+texture = ExtResource("2_b7lrl")

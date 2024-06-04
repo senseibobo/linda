@@ -1,0 +1,176 @@
+[gd_scene load_steps=18 format=3 uid="uid://cqmg0e1x116rv"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_1ae4s"]
+[ext_resource type="PackedScene" uid="uid://y7dywljavgw5" path="res://entities/player/player.tscn" id="1_l5s74"]
+[ext_resource type="Script" path="res://levels/game_camera.gd" id="3_asa5x"]
+[ext_resource type="Texture2D" uid="uid://bb6cxj056fx76" path="res://levels/sektor_1.png" id="5_5e6yp"]
+[ext_resource type="PackedScene" uid="uid://bde35rak4fh4w" path="res://entities/weapons/bread.tscn" id="5_bdvbq"]
+[ext_resource type="PackedScene" uid="uid://bb264i1tmfmtx" path="res://entities/enemy/bread_grandma.tscn" id="5_xbyj2"]
+[ext_resource type="PackedScene" uid="uid://bwgkflppxbn76" path="res://entities/enemy/grandpa.tscn" id="6_dtbas"]
+[ext_resource type="PackedScene" uid="uid://v66akbikwr8a" path="res://items/golden_bread.tscn" id="6_wpp4u"]
+[ext_resource type="PackedScene" uid="uid://vxijpv05j4es" path="res://entities/weapons/satara.tscn" id="8_iniga"]
+[ext_resource type="Script" path="res://levels/exit_area.gd" id="9_fojyv"]
+[ext_resource type="PackedScene" uid="uid://c0bxtv2toov1c" path="res://levels/level_2.tscn" id="10_2b1iw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ip6xg"]
+vertices = PackedVector2Array(143, -196, 143, -76, 71, -76, -137, -196, 71, -11, 78, -11, 78, 3, 103, 3, 103, 109, -13, 140, 143, 109, 143, 140, -13, 205, 143, 205, 143, 232, -137, 232, -137, 127, -106, 127, -106, 12, -137, 12, -137, 3, -30, 3, -30, -11, -21, -11, -21, -76, -137, -76, 143, -233, -137, -233, -137, -234, 143, -240)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(8, 10, 11, 9), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(12, 15, 16, 17, 9), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(21, 22, 23, 6, 9), PackedInt32Array(24, 25, 3), PackedInt32Array(24, 3, 2, 4), PackedInt32Array(23, 24, 4, 6), PackedInt32Array(17, 18, 21, 9), PackedInt32Array(26, 27, 28, 29)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-159, -242, -155, 257, 163, 258, 164, -249)])
+parsed_geometry_type = 1
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tokv"]
+size = Vector2(21, 483)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4vnh"]
+size = Vector2(156, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmroc"]
+size = Vector2(41, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tslg"]
+size = Vector2(29, 98.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfvp"]
+size = Vector2(302, 6)
+
+[node name="Level1" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1ae4s")
+
+[node name="Sektor1" type="Sprite2D" parent="."]
+z_index = -60
+position = Vector2(0, -8)
+texture = ExtResource("5_5e6yp")
+metadata/_edit_lock_ = true
+
+[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(0, -160)
+process_callback = 0
+script = ExtResource("3_asa5x")
+target = NodePath("../Player")
+top_border = 32.0
+bottom_border = 64.0
+position_change_amount = 61.0
+
+[node name="Player" parent="." instance=ExtResource("1_l5s74")]
+position = Vector2(0, -192)
+collision_mask = 2
+motion_mode = 0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -8)
+navigation_polygon = SubResource("NavigationPolygon_ip6xg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-155.5, 0.5)
+shape = SubResource("RectangleShape2D_2tokv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-1, 251)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_2tokv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(6, -215)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_2tokv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(161, 9)
+shape = SubResource("RectangleShape2D_2tokv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-107, -43)
+shape = SubResource("RectangleShape2D_v4vnh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(157, -43)
+shape = SubResource("RectangleShape2D_v4vnh")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-116, -29)
+shape = SubResource("RectangleShape2D_v4vnh")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(164, -29)
+shape = SubResource("RectangleShape2D_v4vnh")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(73, 172)
+shape = SubResource("RectangleShape2D_v4vnh")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(131.5, 54.5)
+shape = SubResource("RectangleShape2D_dmroc")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(-128, 69.25)
+shape = SubResource("RectangleShape2D_4tslg")
+
+[node name="GoldenBread" parent="." instance=ExtResource("6_wpp4u")]
+position = Vector2(24, -55)
+collision_layer = 1
+collision_mask = 1
+collision_priority = 1.0
+motion_mode = 0
+
+[node name="ExitArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("9_fojyv")
+next_scene = ExtResource("10_2b1iw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(2, 232)
+shape = SubResource("RectangleShape2D_vnfvp")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BreadGrandma" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(119, -158)
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq"), ExtResource("5_bdvbq")])
+
+[node name="BreadGrandma2" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(-96, -94)
+
+[node name="BreadGrandma3" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(71, -54)
+base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq")])
+
+[node name="BreadGrandma4" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(-114, 31)
+
+[node name="BreadGrandma5" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(-54, -19)
+base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq")])
+
+[node name="BreadGrandma6" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(-16, 179)
+behavior = 1
+
+[node name="BreadGrandma7" parent="Enemies" instance=ExtResource("5_xbyj2")]
+position = Vector2(-121, 210)
+base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq")])
+
+[node name="Grandpa" parent="Enemies" instance=ExtResource("6_dtbas")]
+position = Vector2(105, 30)
+rotation = -0.00631676
+behavior = 1
+base_weapons_scenes = Array[PackedScene]([ExtResource("8_iniga")])
+
+[node name="Grandpa2" parent="Enemies" instance=ExtResource("6_dtbas")]
+position = Vector2(104, 17)
+base_weapons_scenes = Array[PackedScene]([ExtResource("5_bdvbq")])
+
+[node name="Grandpa3" parent="Enemies" instance=ExtResource("6_dtbas")]
+position = Vector2(-113, 91)
+
+[connection signal="picked_up" from="GoldenBread" to="." method="activate_enemies" flags=6 unbinds=1]
+[connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_body_entered"]

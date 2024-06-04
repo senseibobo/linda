@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bde35rak4fh4w"]
+
+[ext_resource type="PackedScene" uid="uid://cbn7cviu38hr0" path="res://entities/weapons/stick_weapon.tscn" id="1_w57j3"]
+[ext_resource type="Texture2D" uid="uid://dgpqekqcpoanu" path="res://entities/enemy/bread.png" id="2_bk7ca"]
+
+[node name="Bread" instance=ExtResource("1_w57j3")]
+
+[node name="Sprite" parent="." index="0"]
+texture = null
+
+[node name="Bread" type="Sprite2D" parent="Sprite" index="1"]
+position = Vector2(1, 0)
+rotation = 0.785397
+texture = ExtResource("2_bk7ca")

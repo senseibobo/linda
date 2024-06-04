@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://vxijpv05j4es"]
+
+[ext_resource type="PackedScene" uid="uid://cbn7cviu38hr0" path="res://entities/weapons/stick_weapon.tscn" id="1_h774x"]
+[ext_resource type="Texture2D" uid="uid://dnb464c1umdna" path="res://entities/weapons/satara.png" id="2_35vw3"]
+
+[node name="Satara" instance=ExtResource("1_h774x")]
+damage = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="1"]
+rotation = -1.3765
+texture = ExtResource("2_35vw3")

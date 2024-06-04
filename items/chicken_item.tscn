@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://baypuri717dx8"]
+
+[ext_resource type="PackedScene" uid="uid://dncen3lxupg3w" path="res://items/target_item.tscn" id="1_gpri3"]
+[ext_resource type="Texture2D" uid="uid://cq3ldtpyxa2d3" path="res://items/ULTIMATECHICKEN.png" id="2_o6rg4"]
+
+[node name="ChickenItem" instance=ExtResource("1_gpri3")]
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_o6rg4")

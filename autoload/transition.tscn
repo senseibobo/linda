@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://b03vwu2w0fr05"]
+
+[ext_resource type="Shader" path="res://autoload/transition.gdshader" id="1_hvnfa"]
+[ext_resource type="Script" path="res://autoload/transition.gd" id="1_wpvld"]
+[ext_resource type="Texture2D" uid="uid://h8x7vjmmlauk" path="res://autoload/dots.png" id="2_4eg06"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_it4uw"]
+shader = ExtResource("1_hvnfa")
+shader_parameter/t = 0.0
+shader_parameter/node_size = Vector2(26, 26)
+shader_parameter/color = Color(1, 0.835294, 0.196078, 1)
+shader_parameter/albedo_texture = ExtResource("2_4eg06")
+
+[sub_resource type="Animation" id="Animation_jhxae"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/t")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vxg0i"]
+resource_name = "transition"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/t")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2, 2)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"transitioned"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hee6k"]
+_data = {
+"RESET": SubResource("Animation_jhxae"),
+"transition": SubResource("Animation_vxg0i")
+}
+
+[node name="Transition" type="CanvasLayer" node_paths=PackedStringArray("animation_player")]
+layer = 121
+script = ExtResource("1_wpvld")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_it4uw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hee6k")
+}

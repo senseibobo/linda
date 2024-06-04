@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://v66akbikwr8a"]
+
+[ext_resource type="PackedScene" uid="uid://dncen3lxupg3w" path="res://items/target_item.tscn" id="1_st104"]
+[ext_resource type="Texture2D" uid="uid://reo2xvcr57p2" path="res://items/goldenbread.png" id="2_cf1sk"]
+
+[node name="GoldenBread" instance=ExtResource("1_st104")]
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(1, 1)
+texture = ExtResource("2_cf1sk")
